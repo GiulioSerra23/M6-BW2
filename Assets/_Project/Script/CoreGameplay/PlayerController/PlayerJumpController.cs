@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerJumpController : MonoBehaviour
 {
     [Header("Jump Settings")]
@@ -7,6 +8,7 @@ public class PlayerJumpController : MonoBehaviour
     [SerializeField] private GroundCheck _groundCheck;
 
     private Rigidbody _rb;
+    private bool _jumpRequested; // Flag: input letto in Update, applicato in FixedUpdate
 
     private void Awake()
     {
@@ -16,9 +18,16 @@ public class PlayerJumpController : MonoBehaviour
     private void Update()
     {
         if (_groundCheck.IsGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
-        }
+           _jumpRequested = true;
+    }
+
+    private void FixedUpdate()
+    {
+        // Fisica SOLO in Update
+        if (!_jumpRequested) return;
+
+        _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        _jumpRequested = false;
     }
 }
 
