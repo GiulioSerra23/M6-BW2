@@ -24,4 +24,8 @@ MonoBehaviour:
       attaccato a un oggetto, si usa uno ScriptableObject. "
     linkText: 
     url: 
+  - heading: PlayerController
+    text: 
+    linkText: 
+    url: 
   loadedLayout: 0

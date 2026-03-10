@@ -2,6 +2,7 @@
 using UnityEditor;
 using System.IO;
 using System.Reflection;
+using System;
 
 // [CustomEditor] collega questo Editor al tipo Readme.
 // Ogni volta che Unity seleziona un asset Readme, usa questa classe per renderizzarlo.
@@ -46,11 +47,20 @@ public class ReadmeEditor : Editor
 
     static void LoadLayout()
     {
-        // Reflection necessaria: WindowLayout è una classe interna di Unity,
-        // non esposta nelle API pubbliche. Approccio fragile ma è l'unico modo.
-        var assembly   = typeof(EditorApplication).Assembly;
+        var assembly = typeof(EditorApplication).Assembly;
         var layoutType = assembly.GetType("UnityEditor.WindowLayout", throwOnError: true);
-        var method     = layoutType.GetMethod("LoadWindowLayout", BindingFlags.Public | BindingFlags.Static);
+
+        // ❌ VECCHIO: trova tutti gli overload, Unity non sa quale scegliere
+        // var method = layoutType.GetMethod("LoadWindowLayout", BindingFlags.Public | BindingFlags.Static);
+
+        // ✅ NUOVO: specifica esattamente i tipi dei parametri dell'overload che vuoi
+        var method = layoutType.GetMethod(
+            "LoadWindowLayout",
+            BindingFlags.Public | BindingFlags.Static,
+            binder: null,
+            types: new[] { typeof(string), typeof(bool) },  // firma esatta
+            modifiers: null
+        );
 
         if (method == null)
         {
@@ -58,7 +68,11 @@ public class ReadmeEditor : Editor
             return;
         }
 
-        method.Invoke(null, new object[] { Path.Combine(Application.dataPath, "TutorialInfo/Layout.wlt"), false });
+        method.Invoke(null, new object[]
+        {
+        Path.Combine(Application.dataPath, "TutorialInfo/Layout.wlt"),
+        false
+        });
     }
 
     static Readme SelectReadme()
@@ -75,10 +89,10 @@ public class ReadmeEditor : Editor
         if (ids.Length > 1)
             Debug.LogWarning($"[ReadmeEditor] Trovati {ids.Length} asset Readme. Viene usato il primo.");
 
-        var path         = AssetDatabase.GUIDToAssetPath(ids[0]);
+        var path = AssetDatabase.GUIDToAssetPath(ids[0]);
         var readmeObject = AssetDatabase.LoadMainAssetAtPath(path);
 
-        Selection.objects = new Object[] { readmeObject };
+        Selection.objects = new UnityEngine.Object[] { readmeObject };
         return readmeObject as Readme;
     }
 
@@ -133,12 +147,12 @@ public class ReadmeEditor : Editor
     {
         if (m_Initialized) return;
 
-        m_BodyStyle           = new GUIStyle(EditorStyles.label) { wordWrap = true, fontSize = 14, richText = true };
-        m_TitleStyle          = new GUIStyle(m_BodyStyle) { fontSize = 26 };
-        m_HeadingStyle        = new GUIStyle(m_BodyStyle) { fontStyle = FontStyle.Bold, fontSize = 18 };
-        m_LinkStyle           = new GUIStyle(m_BodyStyle) { wordWrap = false, stretchWidth = false };
+        m_BodyStyle = new GUIStyle(EditorStyles.label) { wordWrap = true, fontSize = 14, richText = true };
+        m_TitleStyle = new GUIStyle(m_BodyStyle) { fontSize = 26 };
+        m_HeadingStyle = new GUIStyle(m_BodyStyle) { fontStyle = FontStyle.Bold, fontSize = 18 };
+        m_LinkStyle = new GUIStyle(m_BodyStyle) { wordWrap = false, stretchWidth = false };
         m_LinkStyle.normal.textColor = new Color(0x00 / 255f, 0x78 / 255f, 0xDA / 255f, 1f);
-        m_ButtonStyle         = new GUIStyle(EditorStyles.miniButton) { fontStyle = FontStyle.Bold };
+        m_ButtonStyle = new GUIStyle(EditorStyles.miniButton) { fontStyle = FontStyle.Bold };
 
         m_Initialized = true;
     }
@@ -147,7 +161,7 @@ public class ReadmeEditor : Editor
     #region Inspector GUI
     protected override void OnHeaderGUI()
     {
-        var readme    = (Readme)target;
+        var readme = (Readme)target;
         Init();
 
         var iconWidth = Mathf.Min(EditorGUIUtility.currentViewWidth / 3f - 20f, 128f);
@@ -175,7 +189,7 @@ public class ReadmeEditor : Editor
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-        
+
         var readme = (Readme)target;
         Init();
 
