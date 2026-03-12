@@ -895,7 +895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startSpeed: 10
   _maxSpeed: 20
-  _increseMaxSpeedMultiplier: 1.5
+  _increseMaxSpeedMultiplier: 2
   _acceleration: 0.2
 --- !u!114 &1155293825
 MonoBehaviour:
@@ -910,7 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _groundCheck: {fileID: 1100223498}
-  _jumpForce: 10
+  _jumpForce: 15
   _fallMultiplier: 2.5
 --- !u!114 &1155293826
 MonoBehaviour:

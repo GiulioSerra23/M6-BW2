@@ -1,23 +1,15 @@
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : GenericSingleton<AudioManager>
 {
-    public static AudioManager Instance {  get; private set; }
-
     [Header ("Sound Data")]
     [SerializeField] private SoundData[] _sounds;
     
     private AudioSource _audioSource;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-
+        base.Awake();
         _audioSource = GetComponent<AudioSource>();
     }
 

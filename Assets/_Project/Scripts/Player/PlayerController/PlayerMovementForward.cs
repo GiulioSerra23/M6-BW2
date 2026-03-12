@@ -44,7 +44,6 @@ public class PlayerMovementForward : PlayerController
     {
         IncreseSpeed();
         MoveForward();
-        Debug.Log(_currentSpeed);
     }
 
     private void OnDisable()
