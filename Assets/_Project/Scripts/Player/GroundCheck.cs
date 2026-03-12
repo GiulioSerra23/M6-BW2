@@ -1,7 +1,6 @@
 
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class GroundCheck : MonoBehaviour
 {
@@ -15,6 +14,7 @@ public class GroundCheck : MonoBehaviour
     public event Action<bool> OnIsGroundedChange;
 
     public bool IsGrounded => _isGrounded;
+    public LayerMask GroundMask => _groundMask;
 
     public void CheckIsGrounded()
     {

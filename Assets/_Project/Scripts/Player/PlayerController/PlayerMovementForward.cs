@@ -5,13 +5,24 @@ public class PlayerMovementForward : PlayerController
     [Header("Speed Settings")]
     [SerializeField] private float _startSpeed = 10f;
     [SerializeField] private float _maxSpeed = 20f;
+    [SerializeField] private float _increseMaxSpeedMultiplier = 2f;
     [SerializeField] private float _acceleration = 0.5f;
 
     private float _currentSpeed;
 
+    private void OnEnable()
+    {
+        TileSpawner.Instance.OnZoneChanged += IncreseMaxSpeed;
+    }
+
     private void Start()
     {
         _currentSpeed = _startSpeed;
+    }
+
+    public void IncreseMaxSpeed()
+    {
+        _maxSpeed *= _increseMaxSpeedMultiplier; 
     }
 
     private void IncreseSpeed()
@@ -33,6 +44,13 @@ public class PlayerMovementForward : PlayerController
     {
         IncreseSpeed();
         MoveForward();
+        Debug.Log(_currentSpeed);
+    }
+
+    private void OnDisable()
+    {
+        TileSpawner.Instance.OnZoneChanged -= IncreseMaxSpeed;
+        
     }
 }
 

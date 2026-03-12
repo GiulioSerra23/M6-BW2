@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class EndlessTile : PoolableObject
 {
-    private bool _hasTriggered;
-
-    public override void OnDespawned()
-    {
-        _hasTriggered = false;
-    }
+    private bool _hasTriggered;    
 
     public override void OnSpawned()
     {
         _hasTriggered = false;
+    }
+
+    public override void OnDespawned()
+    {
+        _hasTriggered = false;
+        TileSpawner.Instance.RemoveTile(this);
     }
 
     private void OnTriggerEnter(Collider other)

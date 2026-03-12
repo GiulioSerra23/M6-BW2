@@ -12,6 +12,16 @@ public class PlayerJumpController : PlayerController
     [Header("Gravity Settings")]
     [SerializeField] private float _fallMultiplier = 2.5f;
 
+    private bool _isJumping;
+
+    private void CheckIsJumping()
+    {
+        if (_groundCheck.IsGrounded && _rb.velocity.y <= 0)
+        {
+            _isJumping = false;
+        }
+    }
+
     private void HandleJump()
     {
         if (_groundCheck.IsGrounded && Input.GetKeyDown(KeyCode.Space))
@@ -19,6 +29,8 @@ public class PlayerJumpController : PlayerController
             Vector3 velocity = _rb.velocity;
             velocity.y = _jumpForce;
             _rb.velocity = velocity;
+
+            _isJumping = true;
         }
     }
 
@@ -30,6 +42,16 @@ public class PlayerJumpController : PlayerController
         }
     }
 
+    private void StickToGround()
+    {
+        if (_groundCheck.IsGrounded && !_isJumping && _rb.velocity.y > 0)
+        {
+            Vector3 velocity = _rb.velocity;
+            velocity.y = 0f;
+            _rb.velocity = velocity;
+        }
+    }
+
     private void Update()
     {
         HandleJump();
@@ -38,6 +60,8 @@ public class PlayerJumpController : PlayerController
     private void FixedUpdate()
     {
         HandleBetterGravity();
+        CheckIsJumping();
+        StickToGround();
     }
 }
 
