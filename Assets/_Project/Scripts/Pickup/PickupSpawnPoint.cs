@@ -5,13 +5,22 @@ public class PickupSpawnPoint : MonoBehaviour
 {
     [SerializeField] private PoolType poolType;
 
+    private PoolableObject _spawnedPickup;
+
     public void Spawn()
     {
-        PoolableObject obj = PoolManager.Instance.GetPool(poolType).Get();
+        if (_spawnedPickup != null && _spawnedPickup.gameObject.activeInHierarchy) return;
 
-        obj.transform.SetParent(transform);
-        obj.transform.localPosition = Vector3.zero;
-        obj.transform.localRotation = Quaternion.identity;
+        _spawnedPickup = PoolManager.Instance.GetPool(poolType).GetObject();
+
+        _spawnedPickup.transform.SetParent(transform, false);
+        _spawnedPickup.transform.localPosition = Vector3.zero;
+        _spawnedPickup.transform.localRotation = Quaternion.identity;
+    }
+
+    public void Clear()
+    {
+        _spawnedPickup = null;
     }
 }
 

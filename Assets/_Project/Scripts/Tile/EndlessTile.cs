@@ -15,13 +15,18 @@ public class EndlessTile : PoolableObject
 
         foreach (var pickup in _pickupSpawns)
         {
-            pickup.Spawn();
+            if (pickup != null) pickup.Spawn();            
         }
     }
 
     public override void OnDespawned()
     {
         _hasTriggered = false;
+
+        foreach (var pickup in _pickupSpawns)
+        {
+            pickup?.Clear();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

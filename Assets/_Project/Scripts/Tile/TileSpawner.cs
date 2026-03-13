@@ -61,7 +61,7 @@ public class TileSpawner : GenericSingleton<TileSpawner>
     {
         PoolType poolType = ChooseTilePool();
 
-        EndlessTile tile = (EndlessTile)PoolManager.Instance.GetPool(poolType).Get();
+        EndlessTile tile = (EndlessTile)PoolManager.Instance.GetPool(poolType).GetObject();
 
         Vector3 position = tile.transform.position;
         position.z = _spawnZ;

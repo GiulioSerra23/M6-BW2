@@ -34,7 +34,7 @@ public class ObjectPool: MonoBehaviour
         return obj;
     }
 
-    public PoolableObject Get()
+    public PoolableObject GetObject()
     {
         if (_available.Count == 0)
         {
@@ -62,6 +62,7 @@ public class ObjectPool: MonoBehaviour
             return;
         }
 
+        obj.transform.SetParent(transform);
         obj.gameObject.SetActive(false);
         _available.Enqueue(obj);
     }
