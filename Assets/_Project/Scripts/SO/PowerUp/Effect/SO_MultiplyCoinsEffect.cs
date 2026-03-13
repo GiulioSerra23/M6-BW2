@@ -5,7 +5,7 @@ using UnityEngine;
 public class SO_MultiplyCoinsEffect : SO_PowerUpEffect
 {
     [Header ("Base Settings")]
-    [SerializeField] private float _baseMultiplier = 1.5f;
+    [SerializeField] private float _baseMultiplier = 2f;
     [SerializeField] private float _baseDuration = 5f;
 
     [Header("Scaling per Level")]

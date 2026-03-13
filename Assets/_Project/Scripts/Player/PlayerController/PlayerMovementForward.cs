@@ -1,23 +1,29 @@
+using System.Threading;
 using UnityEngine;
 
-public class PlayerMovementForward : PlayerController
+public class PlayerMovementForward : MonoBehaviour
 {
     [Header("Speed Settings")]
     [SerializeField] private float _startSpeed = 10f;
     [SerializeField] private float _maxSpeed = 20f;
-    [SerializeField] private float _increseMaxSpeedMultiplier = 2f;
-    [SerializeField] private float _acceleration = 0.5f;
+    [SerializeField] private float _increseMaxSpeedMultiplier = 1.2f;
+    [SerializeField] private float _acceleration = 0.2f;
 
     private float _currentSpeed;
 
     private void OnEnable()
     {
-        TileSpawner.Instance.OnZoneChanged += IncreseMaxSpeed;
+        if (TileSpawner.Instance != null) TileSpawner.Instance.OnZoneChanged += IncreseMaxSpeed;
     }
 
     private void Start()
     {
         _currentSpeed = _startSpeed;
+    }
+
+    public float GetForwardSpeed()
+    {
+        return _currentSpeed;
     }
 
     public void IncreseMaxSpeed()
@@ -27,29 +33,17 @@ public class PlayerMovementForward : PlayerController
 
     private void IncreseSpeed()
     {
-        _currentSpeed = Mathf.MoveTowards(_currentSpeed,_maxSpeed, _acceleration * Time.fixedDeltaTime);
+        _currentSpeed = Mathf.MoveTowards(_currentSpeed, _maxSpeed, _acceleration * Time.deltaTime);
     }
 
-    private void MoveForward()
-    {
-        Vector3 velocity = _rb.velocity;
-
-        velocity.x = 0f;
-        velocity.z = _currentSpeed;
-
-        _rb.velocity = velocity;
-    }
-
-    private void FixedUpdate()
+    private void Update()
     {
         IncreseSpeed();
-        MoveForward();
     }
 
     private void OnDisable()
     {
-        TileSpawner.Instance.OnZoneChanged -= IncreseMaxSpeed;
-        
+        if (TileSpawner.Instance != null) TileSpawner.Instance.OnZoneChanged -= IncreseMaxSpeed;        
     }
 }
 

@@ -6,13 +6,16 @@ public class ObjectPool: MonoBehaviour
 {
     [SerializeField] private PoolableObject _prefab;
     [SerializeField] private int _poolSize = 20;
+    [SerializeField] private int _maxPoolSize = 40;
     [SerializeField] private bool _expandable = true;
 
-    private Queue<PoolableObject> _available = new Queue<PoolableObject>();
+    private Queue<PoolableObject> _available;
     private List<PoolableObject> _objects = new List<PoolableObject>();
 
     private void Awake()
     {
+        _available = new Queue<PoolableObject>(_poolSize);
+
         for (int i = 0; i < _poolSize; i++)
         {
             CreateObject();
@@ -31,11 +34,14 @@ public class ObjectPool: MonoBehaviour
         return obj;
     }
 
-    public PoolableObject Get()
+    public PoolableObject GetObject()
     {
         if (_available.Count == 0)
         {
             if (!_expandable) return null;
+
+            if (_objects.Count >= _maxPoolSize) return null;
+
             CreateObject();
         }
 
@@ -48,8 +54,16 @@ public class ObjectPool: MonoBehaviour
     public void ReturnToPool(PoolableObject obj)
     {
         obj.OnDespawned();
-        obj.gameObject.SetActive(false);
 
+        if (_available.Count > _poolSize)
+        {
+            _objects.Remove(obj);
+            Destroy(obj.gameObject);
+            return;
+        }
+
+        obj.transform.SetParent(transform);
+        obj.gameObject.SetActive(false);
         _available.Enqueue(obj);
     }
 }

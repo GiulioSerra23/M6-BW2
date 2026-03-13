@@ -15,19 +15,22 @@ public class TileSpawner : GenericSingleton<TileSpawner>
     private int _tileCount;
     private float _spawnZ;
 
-    private List<EndlessTile> _activeTiles = new List<EndlessTile>();
+    private List<EndlessTile> _activeTiles;
 
     public event Action OnZoneChanged;
 
+
     private void Start()
     {
+        _activeTiles = new List<EndlessTile>(_tilesOnScreen);
+
         for (int i = 0; i < _tilesOnScreen; i++)
         {
             SpawnTile();
         }
     }
 
-    private PoolType ChoosTilePool()
+    private PoolType ChooseTilePool()
     {
         int zoneIndex = 0;
 
@@ -56,18 +59,30 @@ public class TileSpawner : GenericSingleton<TileSpawner>
 
     public void SpawnTile()
     {
-        PoolType poolType = ChoosTilePool();
+        PoolType poolType = ChooseTilePool();
 
-        PoolableObject obj = PoolManager.Instance.GetPool(poolType).Get();
+        EndlessTile tile = (EndlessTile)PoolManager.Instance.GetPool(poolType).GetObject();
 
-        EndlessTile tile = obj as EndlessTile;
+        Vector3 position = tile.transform.position;
+        position.z = _spawnZ;
+        tile.transform.position = position;
 
-        tile.transform.position = new Vector3(0, 0, _spawnZ);
+        tile.OnTilePassed += HandleTilePassed;
 
         _activeTiles.Add(tile);
 
         _spawnZ += _tileLenght;
         _tileCount++;
+    }
+
+    private void HandleTilePassed(EndlessTile tile)
+    {
+        SpawnTile();
+
+        tile.OnTilePassed -= HandleTilePassed;
+
+        RemoveTile(tile);
+        tile.Release();
     }
 
     public void RemoveTile(EndlessTile tile)

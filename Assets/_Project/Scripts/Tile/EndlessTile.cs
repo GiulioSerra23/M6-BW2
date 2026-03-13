@@ -1,20 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class EndlessTile : PoolableObject
 {
-    private bool _hasTriggered;    
+    [SerializeField] private PickupSpawnPoint[] _pickupSpawns;
+
+    private bool _hasTriggered;
+
+    public event Action<EndlessTile> OnTilePassed;
 
     public override void OnSpawned()
     {
         _hasTriggered = false;
+
+        foreach (var pickup in _pickupSpawns)
+        {
+            if (pickup != null) pickup.Spawn();            
+        }
     }
 
     public override void OnDespawned()
     {
         _hasTriggered = false;
-        TileSpawner.Instance.RemoveTile(this);
+
+        foreach (var pickup in _pickupSpawns)
+        {
+            pickup?.Clear();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,8 +36,6 @@ public class EndlessTile : PoolableObject
 
         _hasTriggered = true;
 
-        TileSpawner.Instance.SpawnTile();
-
-        Release();
+        OnTilePassed?.Invoke(this);
     }
 }
