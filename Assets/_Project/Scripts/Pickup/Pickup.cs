@@ -1,26 +1,38 @@
 
 using UnityEngine;
 
-public class Pickup : MonoBehaviour, IPickable
+public class Pickup : PoolableObject, IPickable
 {
     [Header ("Sound ID")]
     [SerializeField] private SoundID _pickupSound;
 
     private bool _isPicked = false;
 
+    public override void OnSpawned()
+    {
+        _isPicked = false;
+        gameObject.SetActive(true);
+    }
+
+    public override void OnDespawned()
+    {
+        _isPicked = false;
+    }
+
     public virtual void OnPick(GameObject picker)
     {
+        if (_isPicked) return;
+
         _isPicked = true;
         AudioManager.Instance.Play(_pickupSound);
-    }
+
+        Release();
+    }    
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag(Tags.Player)) return;
-
-        if (_isPicked) return;
         
         OnPick(other.gameObject);
-        Destroy(gameObject);
     }
 }

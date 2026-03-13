@@ -63,9 +63,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileTwoTrain Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6026294221686431210, guid: 4ef83cccd33a99742b69cda4c612d708,
+        type: 3}
+      propertyPath: _pickupSpawns.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026294221686431210, guid: 4ef83cccd33a99742b69cda4c612d708,
+        type: 3}
+      propertyPath: _pickupSpawns.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026294221686431210, guid: 4ef83cccd33a99742b69cda4c612d708,
+        type: 3}
+      propertyPath: _pickupSpawns.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7804048702326753059, guid: 4ef83cccd33a99742b69cda4c612d708, type: 3}
+    - {fileID: 5313289414656767549, guid: 4ef83cccd33a99742b69cda4c612d708, type: 3}
+    - {fileID: 6509073330016193856, guid: 4ef83cccd33a99742b69cda4c612d708, type: 3}
+    - {fileID: 2605129838347632455, guid: 4ef83cccd33a99742b69cda4c612d708, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ef83cccd33a99742b69cda4c612d708, type: 3}
