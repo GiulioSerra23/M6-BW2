@@ -23,4 +23,3 @@ public class PickupSpawnPoint : MonoBehaviour
         _spawnedPickup = null;
     }
 }
-
