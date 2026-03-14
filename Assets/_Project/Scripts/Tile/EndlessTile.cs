@@ -15,7 +15,7 @@ public class EndlessTile : PoolableObject
 
         foreach (var pickup in _pickupSpawns)
         {
-            if (pickup != null) pickup.Spawn();            
+            if (pickup != null) pickup.Spawn();
         }
     }
 

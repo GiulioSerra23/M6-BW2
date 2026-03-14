@@ -377,10 +377,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zones:
-  - _startTile: 0
-    _tiles: 00000000
-  - _startTile: 10
+  - _tileCount: 10
     _tiles: 01000000
+  - _tileCount: 10
+    _tiles: 00000000
   _tilesOnScreen: 6
   _tileLenght: 50
 --- !u!1 &728467274
@@ -1109,7 +1109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4378329383c784598bd51a3fd47c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 5408820683758715023, guid: 89ebd2fb7add58641b9a7650f7a13863, type: 3}
+  _prefab: {fileID: 6026294221686431210, guid: 4ef83cccd33a99742b69cda4c612d708, type: 3}
   _poolSize: 10
   _maxPoolSize: 40
   _expandable: 0
@@ -1337,7 +1337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4378329383c784598bd51a3fd47c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 6026294221686431210, guid: 4ef83cccd33a99742b69cda4c612d708, type: 3}
+  _prefab: {fileID: 5408820683758715023, guid: 89ebd2fb7add58641b9a7650f7a13863, type: 3}
   _poolSize: 10
   _maxPoolSize: 40
   _expandable: 0

@@ -12,7 +12,7 @@ public class TileSpawner : GenericSingleton<TileSpawner>
     [SerializeField] private float _tileLenght = 20f;
 
     private int _currentZoneIndex = 0;
-    private int _tileCount;
+    private int _tileSpawnedInZone;
     private float _spawnZ;
 
     private List<EndlessTile> _activeTiles;
@@ -32,25 +32,18 @@ public class TileSpawner : GenericSingleton<TileSpawner>
 
     private PoolType ChooseTilePool()
     {
-        int zoneIndex = 0;
+        TileZone zone = _zones[_currentZoneIndex];
 
-        for (int i = 0; i < _zones.Length; i++)
+        if (_tileSpawnedInZone >= zone.TileCount)
         {
-            if (_tileCount >= _zones[i].StartTile)
-            {
-                zoneIndex = i;
-            }
-        }
+            _currentZoneIndex =(_currentZoneIndex + 1) % _zones.Length;
+            _tileSpawnedInZone = 0;
 
-        if (zoneIndex != _currentZoneIndex)
-        {
-            _currentZoneIndex = zoneIndex;
             OnZoneChanged?.Invoke();
+            zone = _zones[_currentZoneIndex];
         }
 
-        TileZone currentZone = _zones[zoneIndex];
-
-        PoolType[] tiles = currentZone.Tiles;
+        PoolType[] tiles = zone.Tiles;
 
         int randomIndex = UnityEngine.Random.Range(0, tiles.Length);
 
@@ -72,7 +65,7 @@ public class TileSpawner : GenericSingleton<TileSpawner>
         _activeTiles.Add(tile);
 
         _spawnZ += _tileLenght;
-        _tileCount++;
+        _tileSpawnedInZone++;
     }
 
     private void HandleTilePassed(EndlessTile tile)
