@@ -12,7 +12,9 @@ public class CoinsManager : GenericSingleton<CoinsManager>
 
     public event Action<int> OnCoinsChanged;
 
-    private void SetCoins(int coins)
+    public int TotalCoins => _coins;
+
+    public void SetCoins(int coins)
     {
         coins = Mathf.Max(coins, 0);
         _coins = coins;

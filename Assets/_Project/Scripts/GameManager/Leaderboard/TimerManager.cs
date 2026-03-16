@@ -6,12 +6,11 @@ public class TimerManager : GenericSingleton<TimerManager>
 {
     public event Action<float> OnTimeChanged;
 
-    public float CurrentTime { get; private set; }
+    public float CurrentTime { get; private set; }  
 
     private void SetTime(float time)
     {
         CurrentTime = Mathf.Max(time, 0);
-        CurrentTime = time;
     }
 
     private void UpdateTimer()

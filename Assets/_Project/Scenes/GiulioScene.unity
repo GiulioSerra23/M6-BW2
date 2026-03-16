@@ -122,6 +122,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &211112325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 211112326}
+  - component: {fileID: 211112327}
+  m_Layer: 0
+  m_Name: TimerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &211112326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211112325}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 370869632}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &211112327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211112325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1eaf202688d0f84cb7e3dc31e045e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &223204791
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 370869632}
+  - component: {fileID: 370869633}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -212,8 +257,22 @@ Transform:
   - {fileID: 786570254}
   - {fileID: 1320005969}
   - {fileID: 1912350420}
+  - {fileID: 211112326}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &370869633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370869631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8562a867cc714c34c8d104686784fafe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerLife: {fileID: 1155293829}
 --- !u!1 &431851789
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +672,7 @@ Transform:
   m_GameObject: {fileID: 979205885}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 8.863937, z: -0.49022257}
+  m_LocalPosition: {x: 0, y: 6.0639377, z: -0.49022257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -697,55 +756,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!1 &1100223496
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1100223497}
-  - component: {fileID: 1100223498}
-  m_Layer: 0
-  m_Name: GroundChecker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1100223497
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100223496}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.645, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1155293821}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1100223498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1100223496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7032581a396792a42a3b638c7e371d60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _radius: 0.45
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  _isGrounded: 1
 --- !u!1 &1155293817
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,11 +768,12 @@ GameObject:
   - component: {fileID: 1155293820}
   - component: {fileID: 1155293819}
   - component: {fileID: 1155293818}
+  - component: {fileID: 1155293827}
   - component: {fileID: 1155293828}
   - component: {fileID: 1155293825}
   - component: {fileID: 1155293823}
   - component: {fileID: 1155293826}
-  - component: {fileID: 1155293827}
+  - component: {fileID: 1155293829}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -852,11 +863,10 @@ Transform:
   m_GameObject: {fileID: 1155293817}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 4.1}
+  m_LocalPosition: {x: 0, y: 1.2, z: 4.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1100223497}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1155293823
@@ -888,7 +898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpForce: 30
-  _gravity: -0.5
+  _gravity: -0.1
 --- !u!114 &1155293826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,6 +956,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb417b5365828cf41987b04316da1056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1155293829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155293817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c03db30f7b669f42bc78f40afb266ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitAudio: 100
+  _maxHp: 3
+  _currentHp: 0
+  _startFullHp: 1
 --- !u!1 &1320005968
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,7 +1084,7 @@ Transform:
   m_GameObject: {fileID: 1421452827}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 8.863937, z: -0.49022257}
+  m_LocalPosition: {x: 0, y: 6.0639377, z: -0.49022257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

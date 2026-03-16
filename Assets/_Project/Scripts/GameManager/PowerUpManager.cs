@@ -11,7 +11,7 @@ public class PowerUpManager : GenericSingleton<PowerUpManager>
     {
         if (_powerUpLevels.TryGetValue(item.ID, out var level)) return level;
 
-        return 1;
+        return 0;
     }
 
     public bool CanUpgrade(SO_PowerUpItem item)
@@ -37,8 +37,13 @@ public class PowerUpManager : GenericSingleton<PowerUpManager>
         _powerUpLevels[item.ID] = level;
     }
 
+    public void SetLevels(Dictionary<ObjectID, int> levels)
+    {
+        _powerUpLevels = new Dictionary<ObjectID, int>(levels);
+    }
+
     public Dictionary<ObjectID, int> GetAllPowerUpLevels()
     {
-        return _powerUpLevels;
+        return new Dictionary<ObjectID, int>(_powerUpLevels);
     }
 }

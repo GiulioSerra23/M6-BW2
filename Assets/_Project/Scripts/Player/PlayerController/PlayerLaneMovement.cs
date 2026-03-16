@@ -31,7 +31,7 @@ public class PlayerLaneMovement : MonoBehaviour
         int newLane = Mathf.Clamp(_currentLane + direction, 0, _laneCount - 1);
         float targetX = (newLane - (_laneCount / 2)) * _laneDistance;
 
-        Vector3 origin = transform.position + Vector3.up * _raycastHeight;
+        Vector3 origin = transform.position + Vector3.down * _raycastHeight;
 
         origin += transform.forward * (_movementForward.GetForwardSpeed() * 0.1f);
 
