@@ -16,7 +16,6 @@ public class InventoryManager : GenericSingleton<InventoryManager>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(gameObject);
 
         MapKeys();
     }

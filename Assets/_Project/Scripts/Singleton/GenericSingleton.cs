@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class GenericSingleton<T> : MonoBehaviour where T : MonoBehaviour
@@ -5,6 +6,8 @@ public abstract class GenericSingleton<T> : MonoBehaviour where T : MonoBehaviou
     private static T _instance;
 
     public static T Instance { get => _instance; private set => _instance = value; }
+
+    public static event Action OnSingletonReady;
 
     protected virtual void Awake()
     {
@@ -15,6 +18,7 @@ public abstract class GenericSingleton<T> : MonoBehaviour where T : MonoBehaviou
         }
 
         _instance = GetComponent<T>();
+        OnSingletonReady?.Invoke();
     }
 
     protected virtual void OnDestroy()

@@ -259,6 +259,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: sasuke@Neutral Idle
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 2f76bf8ded76f534cb820bc0462106e6,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 14555753382dadb4d82729a8b11494cc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

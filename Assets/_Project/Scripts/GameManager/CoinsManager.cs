@@ -12,13 +12,7 @@ public class CoinsManager : GenericSingleton<CoinsManager>
 
     public event Action<int> OnCoinsChanged;
 
-    public int TotalCoins => _coins;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        DontDestroyOnLoad(gameObject);
-    }   
+    public int TotalCoins => _coins;   
 
     public void SetCoins(int coins)
     {

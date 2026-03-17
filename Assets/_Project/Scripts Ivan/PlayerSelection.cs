@@ -14,10 +14,6 @@ public class PlayerSelection : MonoBehaviour
     [SerializeField] private string SceneGame = "Ivan2";
     [SerializeField] private float awaitBeforeStarts = 2f;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
     public void Naruto()
     {
         SelectedCharacter = "Naruto";

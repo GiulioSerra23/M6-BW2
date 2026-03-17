@@ -35,6 +35,8 @@ public class GameState : GenericSingleton<GameState>
     {
         SaveData data = SavingSystem.Load();
 
+        if (data == null) return;
+
         if (data.BestTimes != null) LeaderboardManager.Instance.SetTimes(data.BestTimes);
         if (data.PowerUps != null) PowerUpManager.Instance.SetLevels(data.PowerUps);
         CoinsManager.Instance.SetCoins(data.TotalCoins);

@@ -26,7 +26,7 @@ public static class SavingSystem
         if (!ExistAPath())
         {
             Debug.LogError($"Unable to load data in {path}");
-            throw new FileNotFoundException($"{path} doesnt exist");
+            return null;
         }
 
         string jsonText = File.ReadAllText(path);

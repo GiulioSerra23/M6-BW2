@@ -33,7 +33,7 @@ public class PlayerLaneMovement : MonoBehaviour
 
         Vector3 origin = transform.position + Vector3.down * _raycastHeight;
 
-        origin += transform.forward * (_movementForward.GetForwardSpeed() * 0.1f);
+        origin += transform.forward * (_movementForward.GetForwardSpeed() * 0.15f);
 
         Vector3 directionVector = new Vector3(targetX - transform.position.x, 0, 0).normalized;
         float distance = Mathf.Abs(targetX - transform.position.x) + _laneDistance * 0.2f;

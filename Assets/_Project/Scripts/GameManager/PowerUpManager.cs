@@ -7,12 +7,6 @@ public class PowerUpManager : GenericSingleton<PowerUpManager>
 
     public event Action OnPowerUpsUpgraded;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        DontDestroyOnLoad(gameObject);
-    }
-
     public int GetLevel(SO_PowerUpItem item)
     {
         if (_powerUpLevels.TryGetValue(item.ID, out var level)) return level;
