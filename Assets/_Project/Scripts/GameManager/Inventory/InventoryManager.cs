@@ -2,13 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : GenericSingleton<InventoryManager>
 {
-    public static InventoryManager Instance { get; private set; }
-
-    [Header ("References")]
-    [SerializeField] private GameObject _player;
-
     [Header("Inventory Settings")]
     [SerializeField] private int _maxSlots = 4;
     [SerializeField] private List<InventorySlotData> _inventory;
@@ -18,15 +13,10 @@ public class InventoryManager : MonoBehaviour
     public event Action OnInventoryChanged;
     public int SlotCount => _inventory.Count;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
 
         MapKeys();
     }
@@ -50,7 +40,7 @@ public class InventoryManager : MonoBehaviour
 
         if (slot.Item == null) return;
 
-        slot.Item.Use(_player);
+        slot.Item.Use(PlayerManager.Instance.CurrentPlayer.gameObject);
 
         if (slot.Item.IsConsumable)
         {

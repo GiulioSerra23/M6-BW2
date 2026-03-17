@@ -6,23 +6,30 @@ using UnityEngine;
 public class WorldOriginShifter : MonoBehaviour
 {
     [Header ("References")]
-    [SerializeField] private Transform _player;
-    [SerializeField] private CharacterController _characterController;
     [SerializeField] private CinemachineVirtualCamera _cam;
 
     [Header ("Shift Settings")]
     [SerializeField] private float _resetDistance = 500f;
 
+    private Transform _player;
+
+    private void Start()
+    {        
+        _player = PlayerManager.Instance.CurrentPlayer.transform;
+    }
+
     private void ShiftWorld()
-    {
+    {        
+        CharacterController controller = PlayerManager.Instance.CurrentPlayer.Controller;
+
         float offset = _player.position.z;
         Vector3 shift = new Vector3(0f, 0f, -offset);
 
-        _characterController.enabled = false;
+        controller.enabled = false;
 
         _player.position += shift;
 
-        _characterController.enabled = true;
+        controller.enabled = true;
 
         TileSpawner.Instance.ShiftWorld(offset);
         _cam.OnTargetObjectWarped(_player, shift);

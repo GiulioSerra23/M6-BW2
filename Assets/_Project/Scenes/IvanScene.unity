@@ -17098,6 +17098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d1d2b4a7bb2346b0768f2035f1729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameplayCam: {fileID: 0}
   duration: 3
 --- !u!1 &2060686455
 GameObject:

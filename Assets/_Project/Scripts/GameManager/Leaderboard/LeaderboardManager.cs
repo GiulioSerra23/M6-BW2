@@ -10,6 +10,8 @@ public class LeaderboardManager : GenericSingleton<LeaderboardManager>
     protected override void Awake()
     {
         base.Awake();
+        DontDestroyOnLoad(gameObject);
+
         _bestTimes = new List<float>(_maxRunTimes);
     }
 

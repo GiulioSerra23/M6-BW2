@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LifeController : MonoBehaviour
+public class LifeController : GenericSingleton<LifeController>
 {
     [Header("Sound ID")]
     [SerializeField] protected SoundID _hitAudio;

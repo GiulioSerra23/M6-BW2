@@ -14,6 +14,12 @@ public class CoinsManager : GenericSingleton<CoinsManager>
 
     public int TotalCoins => _coins;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }   
+
     public void SetCoins(int coins)
     {
         coins = Mathf.Max(coins, 0);

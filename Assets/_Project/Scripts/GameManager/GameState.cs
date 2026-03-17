@@ -2,19 +2,17 @@ using UnityEngine;
 
 public class GameState : GenericSingleton<GameState>
 {
-    [SerializeField] private LifeController _playerLife;
-
     protected override void Awake()
     {
         base.Awake();
-
+        DontDestroyOnLoad(gameObject);
         //LoadGame();
     }
 
     private void Start()
     {
-        _playerLife.OnDie += SaveState;
-        PowerUpManager.Instance.OnPowerUpsUpgraded += SaveState;
+        if (LifeController.Instance != null) LifeController.Instance.OnDie += SaveState;
+        if (PowerUpManager.Instance != null) PowerUpManager.Instance.OnPowerUpsUpgraded += SaveState;
     }
 
     private void SaveState()
@@ -26,7 +24,6 @@ public class GameState : GenericSingleton<GameState>
     {
         SaveData data = new SaveData();
 
-        data.LastRunTime = TimerManager.Instance.CurrentTime;
         data.BestTimes = LeaderboardManager.Instance.GetAllBestTimes();
         data.TotalCoins = CoinsManager.Instance.TotalCoins;
         data.PowerUps = PowerUpManager.Instance.GetAllPowerUpLevels();
@@ -47,7 +44,7 @@ public class GameState : GenericSingleton<GameState>
     {
         base.OnDestroy();
 
-        if (_playerLife != null) _playerLife.OnDie -= SaveState;
+        if (LifeController.Instance != null) LifeController.Instance.OnDie -= SaveState;
         if (PowerUpManager.Instance != null) PowerUpManager.Instance.OnPowerUpsUpgraded -= SaveState;
     }
 }

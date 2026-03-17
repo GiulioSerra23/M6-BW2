@@ -9,7 +9,7 @@ public class RunPlayerChoise : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
 
 
-    private void Start()
+    private void Awake()
     {
         GameObject capsulePlayer = GameObject.FindWithTag("Player");
 
@@ -50,6 +50,10 @@ public class RunPlayerChoise : MonoBehaviour
         if (prefabToIstantiate != null && spawnPoint != null)
         {
             GameObject playerClone = Instantiate(prefabToIstantiate, spawnPoint.position, spawnPoint.rotation);
+
+            PlayerMotor playerMotor = playerClone.GetComponent<PlayerMotor>();
+            PlayerManager.Instance.SetPlayer(playerMotor);
+
             Debug.Log("Player spawnato" + choise);
         }
     }
