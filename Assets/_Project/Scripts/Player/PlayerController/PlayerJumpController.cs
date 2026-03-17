@@ -11,6 +11,8 @@ public class PlayerJumpController : MonoBehaviour
     private float _verticalVelocity;
     private PlayerMotor _controller;
 
+    public bool OverrideVertical { get; set; } = false;
+
     private void Awake()
     {
         _controller = GetComponent<PlayerMotor>();
@@ -18,6 +20,7 @@ public class PlayerJumpController : MonoBehaviour
 
     public float GetVerticalVelocity()
     {
+        if (OverrideVertical) return 0f;
         return _verticalVelocity;
     }
 

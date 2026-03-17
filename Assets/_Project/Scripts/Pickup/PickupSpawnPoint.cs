@@ -9,7 +9,7 @@ public class PickupSpawnPoint : MonoBehaviour
 
     public void Spawn()
     {
-        if (_spawnedPickup != null && _spawnedPickup.gameObject.activeInHierarchy) return;
+        if (_spawnedPickup != null && _spawnedPickup.transform.parent == transform) return;
 
         _spawnedPickup = PoolManager.Instance.GetPool(poolType).GetObject();
 
@@ -20,6 +20,11 @@ public class PickupSpawnPoint : MonoBehaviour
 
     public void Clear()
     {
+        if (_spawnedPickup != null && _spawnedPickup.transform.parent == transform)
+        {
+            _spawnedPickup.Release();            
+        }
+
         _spawnedPickup = null;
     }
 }

@@ -12,11 +12,13 @@ public class LifeController : MonoBehaviour
     [SerializeField] private int _maxHp;
     [SerializeField] private int _currentHp;
     [SerializeField] private bool _startFullHp = true;
+    [SerializeField] private bool _canTakeDamage = true;
 
     public event Action<int> OnHpChanged;
     public event Action OnDie;
 
     public int CurrentHp { get => _currentHp; private set => SetHp(value); }
+    public bool CanTakeDamage { get => _canTakeDamage; set => _canTakeDamage = value; }
 
     private void Start()
     {
@@ -50,6 +52,8 @@ public class LifeController : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (!_canTakeDamage) return;
+
         SetHp(_currentHp - amount);
         AudioManager.Instance.Play(_hitAudio);
     }

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e97c94b920440a84e85f27425a756a67, type: 3}
-  m_Name: MutliplyCoinPowerUp
+  m_Name: ShieldPowerUp
   m_EditorClassIdentifier: 
-  _id: 0
-  _name: Multiply Coin Power Up
+  _id: 1
+  _name: Shield Power Up
   _icon: {fileID: 0}
-  _description: Multiple the amount of coin picked based on the level of this powerUp
+  _description: Give you a shield that stay for an amount of time, and tank an hit
   _isStackable: 1
   _isConsumable: 1
-  _effect: {fileID: 11400000, guid: daac9d1c0485f55478a2da6318f77d5c, type: 2}
+  _effect: {fileID: 11400000, guid: 6fa2603afa94bcf49a422aebf68a123c, type: 2}
   _maxLevel: 5

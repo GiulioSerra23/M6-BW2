@@ -3,34 +3,33 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMotor : MonoBehaviour
 {
-    private CharacterController _controller;
-
-    private PlayerJumpController _jumpController;
-    private PlayerLaneMovement _laneMovement;
-    private PlayerMovementForward _forwardMovement;
+    public CharacterController Controller { get; private set; }
+    public PlayerJumpController JumpController { get; private set; }
+    public PlayerLaneMovement LaneMovement { get; private set; }
+    public PlayerMovementForward ForwardMovement { get; private set; }
 
     private void Awake()
     {
-        _controller = GetComponent<CharacterController>();
-        _jumpController = GetComponent<PlayerJumpController>();
-        _laneMovement = GetComponent<PlayerLaneMovement>();
-        _forwardMovement = GetComponent<PlayerMovementForward>();
+        Controller = GetComponent<CharacterController>();
+        JumpController = GetComponent<PlayerJumpController>();
+        LaneMovement = GetComponent<PlayerLaneMovement>();
+        ForwardMovement = GetComponent<PlayerMovementForward>();
     }
 
     public bool IsGrounded()
     {
-        return _controller.isGrounded;
+        return Controller.isGrounded;
     }
 
     private void Move()
     {
-        float moveX = _laneMovement.GetMovementX(transform.position.x);
-        float moveY = _jumpController.GetVerticalVelocity() * Time.deltaTime;
-        float moveZ = _forwardMovement.GetForwardSpeed() * Time.deltaTime;
+        float moveX = LaneMovement.GetMovementX(transform.position.x);
+        float moveY = JumpController.GetVerticalVelocity() * Time.deltaTime;
+        float moveZ = ForwardMovement.GetForwardSpeed() * Time.deltaTime;
 
         Vector3 move = new Vector3(moveX, moveY, moveZ);
 
-        _controller.Move(move);
+        Controller.Move(move);
     }
 
     private void Update()

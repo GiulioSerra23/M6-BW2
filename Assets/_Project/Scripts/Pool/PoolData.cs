@@ -3,9 +3,11 @@ using UnityEngine;
 
 public enum PoolType
 {
-    TILE_ONE_TRAIN_POOL, // nomi provvisori
-    TILE_TWO_TRAIN_POOL,
-    PICKUP_COIN_POOL,
+    TILE_ZONE1_V1 = 0,
+    TILE_ZONE1_V2 = 1,
+    TILE_ZONE1_V3 = 2,
+
+    PICKUP_COIN_POOL = 20,
 }
 
 [System.Serializable]
