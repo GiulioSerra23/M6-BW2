@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 2582549996736637126}
   - component: {fileID: 1648336124626761562}
   - component: {fileID: 4747524998349562487}
+  - component: {fileID: 4875953037580127487}
   m_Layer: 0
   m_Name: Sasuke
   m_TagString: Player
@@ -174,6 +175,27 @@ MonoBehaviour:
   _currentHp: 0
   _startFullHp: 1
   _canTakeDamage: 1
+--- !u!95 &4875953037580127487
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4068616837412491595}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 2f76bf8ded76f534cb820bc0462106e6, type: 3}
+  m_Controller: {fileID: 9100000, guid: 14555753382dadb4d82729a8b11494cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &5946697339355704589
 PrefabInstance:
   m_ObjectHideFlags: 0
