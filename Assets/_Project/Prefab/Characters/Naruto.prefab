@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 9191728718951106826}
   - component: {fileID: 5288220725660792777}
   - component: {fileID: 6194290753187219250}
+  - component: {fileID: 6406193452502118233}
   m_Layer: 0
   m_Name: Naruto
   m_TagString: Player
@@ -174,6 +175,27 @@ MonoBehaviour:
   _currentHp: 0
   _startFullHp: 1
   _canTakeDamage: 1
+--- !u!95 &6406193452502118233
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8597067660061054653}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 41e3892afa3f1a34cb413af94e0161ac, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7dbe159d7004c184092c5b38f4b4a833, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &7653184578836550535
 PrefabInstance:
   m_ObjectHideFlags: 0
