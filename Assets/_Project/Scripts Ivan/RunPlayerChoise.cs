@@ -8,22 +8,67 @@ public class RunPlayerChoise : MonoBehaviour
     [SerializeField] private GameObject sasukePrefab;
     [SerializeField] private Transform spawnPoint;
 
+
     private void Start()
     {
-        string choise = PlayerSelection.SelectedCharacter;
+        GameObject capsulePlayer = GameObject.FindWithTag("Player");
 
-        if (choise == "Naruto")
+        if (capsulePlayer != null)
         {
-            Instantiate(narutoPrefab, spawnPoint.position, spawnPoint.rotation);
-        }
-        else if (choise == "Sasuke")
-        {
-            Instantiate(sasukePrefab, spawnPoint.position, spawnPoint.rotation);
+            spawnPoint = capsulePlayer.transform;
+
+            MeshRenderer mr = capsulePlayer.GetComponent<MeshRenderer>();
+            if (mr != null) mr.enabled = false;
         }
         else
         {
-            Debug.Log("Nessun personaggio scelto, carico naruto di default");
-            Instantiate(narutoPrefab, spawnPoint.position, spawnPoint.rotation);
+            Debug.LogWarning("Nessun player trovato");
+        }
+        SpawnSelectedCharacter();
+    }
+
+
+    private void SpawnSelectedCharacter()
+    {
+        string choise = PlayerSelection.SelectedCharacter;
+        GameObject prefabToIstantiate = null;
+
+        if (choise == "Naruto")
+        {
+            prefabToIstantiate = narutoPrefab;
+        }
+        else if (choise == "Sasuke")
+        {
+            prefabToIstantiate = sasukePrefab;
+        }
+        else
+        {
+            Debug.LogWarning("Nessuna scelta fatta. Di default scelgo Naruto");
+            prefabToIstantiate = narutoPrefab;
+        }
+
+        if (prefabToIstantiate != null && spawnPoint != null)
+        {
+            GameObject playerClone = Instantiate(prefabToIstantiate, spawnPoint.position, spawnPoint.rotation);
+            Debug.Log("Player spawnato" + choise);
         }
     }
+    //private void Start()
+    //{
+    //    string choise = PlayerSelection.SelectedCharacter;
+
+    //    if (choise == "Naruto")
+    //    {
+    //        Instantiate(narutoPrefab, spawnPoint.position, spawnPoint.rotation);
+    //    }
+    //    else if (choise == "Sasuke")
+    //    {
+    //        Instantiate(sasukePrefab, spawnPoint.position, spawnPoint.rotation);
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Nessun personaggio scelto, carico naruto di default");
+    //        Instantiate(narutoPrefab, spawnPoint.position, spawnPoint.rotation);
+    //    }
+    //}
 }

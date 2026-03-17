@@ -12671,7 +12671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   narutoAnim: {fileID: 2135951194}
   sasukeAnim: {fileID: 1681250003}
-  SceneGame: Ivan2
+  SceneGame: GiulioScene
   awaitBeforeStarts: 5
 --- !u!4 &1499449627
 Transform:
