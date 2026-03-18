@@ -38,6 +38,7 @@ public class PlayerSelection : MonoBehaviour
         }
 
         yield return new WaitForSeconds(awaitBeforeStarts);
+        GameState.Instance.SetupRun();
         SceneManager.LoadScene(SceneGame);
     }
 }

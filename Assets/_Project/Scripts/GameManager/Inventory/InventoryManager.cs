@@ -123,6 +123,12 @@ public class InventoryManager : GenericSingleton<InventoryManager>
         _inventory.RemoveAt(index);
     }
 
+    public void ClearInvetory()
+    {
+        _inventory.Clear();
+        OnInventoryChanged?.Invoke();
+    }
+
     private void Update()
     {
         for (int i = 0; i < _hotKeys.Length; i++)

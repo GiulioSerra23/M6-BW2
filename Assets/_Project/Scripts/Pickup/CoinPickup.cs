@@ -10,6 +10,6 @@ public class CoinPickup : Pickup
     {
         base.OnPick(picker);
 
-        CoinsManager.Instance.AddCoins(_coinsAmount);
+        CoinsManager.Instance.AddRunCoins(_coinsAmount);
     }
 }

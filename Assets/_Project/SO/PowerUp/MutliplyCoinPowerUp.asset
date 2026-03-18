@@ -16,7 +16,9 @@ MonoBehaviour:
   _name: Multiply Coin Power Up
   _icon: {fileID: 0}
   _description: Multiple the amount of coin picked based on the level of this powerUp
-  _isStackable: 1
+  _isStackable: 0
   _isConsumable: 1
   _effect: {fileID: 11400000, guid: daac9d1c0485f55478a2da6318f77d5c, type: 2}
   _maxLevel: 5
+  _baseCost: 100
+  _costPerLevel: 50

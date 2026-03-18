@@ -44,6 +44,7 @@ public class UI_PauseMenu : MonoBehaviour
     public void QuitRun()
     {
         Time.timeScale = 1f;
+        CoinsManager.Instance.ResetRunCoins();
         SceneManager.LoadScene(0);
     }
 
@@ -60,6 +61,7 @@ public class UI_PauseMenu : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
+        CoinsManager.Instance.ResetRunCoins();
         SceneManager.LoadScene(2);
     }
 }

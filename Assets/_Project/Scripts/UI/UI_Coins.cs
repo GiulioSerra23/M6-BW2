@@ -19,17 +19,28 @@ public class UI_Coins : MonoBehaviour
 
     private void Init()
     {
-        CoinsManager.Instance.OnCoinsChanged += AddScore;
-        AddScore(CoinsManager.Instance.TotalCoins);
+        CoinsManager.Instance.OnCoinsChanged += UpdateCoins;
+        CoinsManager.Instance.OnRunCoinsChanged += UpdateCoins;
+        UpdateCoins(0);
     }
 
-    public void AddScore(int value)
+    private void UpdateCoins(int value)
     {
-        _scoreText.SetText(value.ToString());
+        int beforeRunCoins = CoinsManager.Instance.TotalCoins;
+        int runCoins = CoinsManager.Instance.RunCoins;
+
+        int total = beforeRunCoins + runCoins;
+        _scoreText.SetText(total.ToString());
     }
 
     private void OnDisable()
     {
-        if (CoinsManager.Instance != null) CoinsManager.Instance.OnCoinsChanged -= AddScore;
+        if (CoinsManager.Instance != null)
+        {
+            CoinsManager.Instance.OnCoinsChanged -= UpdateCoins;
+            CoinsManager.Instance.OnRunCoinsChanged -= UpdateCoins;
+        }
+
+        CoinsManager.OnSingletonReady -= Init;
     }
 }
