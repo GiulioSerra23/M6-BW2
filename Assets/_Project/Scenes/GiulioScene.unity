@@ -517,7 +517,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 370869632}
-  - component: {fileID: 370869633}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -550,20 +549,6 @@ Transform:
   - {fileID: 1659959250}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &370869633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370869631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f599490bbd07eac4e93c950516eb79c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _totalCoins: 0
-  _runCoins: 0
 --- !u!1 &405018648
 GameObject:
   m_ObjectHideFlags: 0
