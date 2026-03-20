@@ -1329,10 +1329,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3349828243163504938, guid: ee266708566ed8d45a2110978ca84b3c,
+        type: 3}
+      propertyPath: _pickupSpawns.Array.size
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8342972476191087032, guid: ee266708566ed8d45a2110978ca84b3c,
         type: 3}
       propertyPath: m_Name
-      value: Section3 (2) Variant
+      value: Section3V3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1424,7 +1429,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3299230447181559711, guid: ee266708566ed8d45a2110978ca84b3c,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 8021048198240666683}
+    - targetCorrespondingSourceObject: {fileID: 3299230447181559711, guid: ee266708566ed8d45a2110978ca84b3c,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 7380098863651604453}
+    - targetCorrespondingSourceObject: {fileID: 3299230447181559711, guid: ee266708566ed8d45a2110978ca84b3c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1186928215870740984}
     - targetCorrespondingSourceObject: {fileID: 3299230447181559711, guid: ee266708566ed8d45a2110978ca84b3c,
         type: 3}
       insertIndex: -1
@@ -1445,14 +1458,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2125182996823343251}
-    - targetCorrespondingSourceObject: {fileID: 3299230447181559711, guid: ee266708566ed8d45a2110978ca84b3c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1186928215870740984}
-    - targetCorrespondingSourceObject: {fileID: 3299230447181559711, guid: ee266708566ed8d45a2110978ca84b3c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8021048198240666683}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee266708566ed8d45a2110978ca84b3c, type: 3}
 --- !u!4 &993494227706938268 stripped
