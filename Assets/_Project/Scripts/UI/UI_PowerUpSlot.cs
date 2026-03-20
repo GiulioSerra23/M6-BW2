@@ -22,7 +22,7 @@ public class UI_PowerUpSlot : MonoBehaviour
     private void Setup()
     {
         _icon.sprite = _powerUp.Icon;
-        _nameText.text = _powerUp.Name;
+        _nameText.SetText(_powerUp.Name);
 
         _buyButton.onClick.RemoveAllListeners();
         _buyButton.onClick.AddListener(OnBuyClicked);
