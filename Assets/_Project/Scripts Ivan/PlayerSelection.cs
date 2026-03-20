@@ -11,7 +11,7 @@ public class PlayerSelection : MonoBehaviour
     [SerializeField] private Animator sasukeAnim;
 
     [Header("Settings")]
-    [SerializeField] private string SceneGame = "Ivan2";
+    [SerializeField] private string SceneGame = "GiulioScene";
     [SerializeField] private float awaitBeforeStarts = 2f;
 
     public void Naruto()
