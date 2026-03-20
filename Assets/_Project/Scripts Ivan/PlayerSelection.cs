@@ -12,7 +12,7 @@ public class PlayerSelection : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private string SceneGame = "GiulioScene";
-    [SerializeField] private float awaitBeforeStarts = 2f;
+    [SerializeField] private float awaitBeforeStarts = 5f;
 
     public void Naruto()
     {
